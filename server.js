@@ -7,14 +7,18 @@ const server = express();
 server.use(express.json());
 server.use(logger);
 
+server.use('/api/projects', projectRouter);
+
 server.get('/', logger, (req, res) => {
-	console.log(logger(req, res));
+	res.send('<h2>You have been logged.</h2>')
 })
 
-module.exports = server;
+// Logger
 
 function logger(req, res, next) {
 	console.log(`[${new Date().toISOString()}] ${ req.method } to ${ req.originalUrl } from ${ req.get('Origin') }`
 	);
 	next();
 };
+
+module.exports = server
