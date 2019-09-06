@@ -8,6 +8,7 @@ server.use(express.json());
 server.use(logger);
 
 server.use('/api/projects', projectRouter);
+server.use('/api/actions', actionRouter);
 
 server.get('/', logger, (req, res) => {
 	res.send('<h2>You have been logged.</h2>')
